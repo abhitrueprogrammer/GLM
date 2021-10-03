@@ -1,12 +1,12 @@
 # Game Library Manager
 
-A simple CLI based Game Library Management tool to create a database for games. The following things can be done to your game library
-
-* Create a record
+A simple CLI based Game Library Management tool to create a database for games. It can perform the following
+* View the added entries in the library
+* Add new entries
 * Delete a record
 * Update a record
 * Search for a record
-* View the library
+
 
 ## Installation
 
@@ -21,7 +21,7 @@ Method 2(Get the latest Version):
 * On windows: 
 
   * Clone the repository(download ZIP).
-  * Double click main.py on windows.
+  * Double click main.py.
 
 * On Linux:
 
