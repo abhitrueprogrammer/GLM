@@ -27,7 +27,7 @@ def getInputForGameEntry():
 def addEntry():
 
         # GL.write({name : GameEntry}, end = "\n")
-        gameEntry = getInputForGameEntry
+        gameEntry = getInputForGameEntry()
         SQLib.addVals(gameEntry)
 
 def GetRating():
@@ -51,10 +51,10 @@ def UpdateRec():
     SQLib.updateRec(rowIDToBeUpdated, updatedInfo)
     print("Record Successfully updated!")
 
-def DelRec():
-    SQLib.showRowIDAndName()
+def DelRec():  
+    SQLib.show_all()
     print("Enter the rowid of the game you want to delete: ", sep="")
-    rowIDToBeDeleted = GetIntFromUser()
+    rowIDToBeDeleted = GetIntFromUser() #add a way to detect values out of range
     answer = ""
     print(f"Are you sure, you want to delete entry number {rowIDToBeDeleted} (y/n):", end= "\n") 
     while answer.lower() != "y" and answer.lower() != "n": #Very important! You learnt how to implement a function that requires a correct input. First take the input, make sure its correct; then implement it.
