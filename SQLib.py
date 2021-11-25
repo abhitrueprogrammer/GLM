@@ -15,11 +15,18 @@ def createTable():
     USERSCORE INTEGER
     )
     """)
+    
 def addVals(gameEntry):
     print(gameEntry)
     cursor.execute(f"INSERT INTO gameList VALUES {gameEntry}")
     conn.commit()
-
+    
+def tableEmpty():
+    cursor.execute("""SELECT count(*) from gameList""")
+    if cursor.fetchall() == [(0,)]:
+        return True
+    else:
+        return False
 def show_all():
     
     cursor.execute("SELECT rowid, * FROM gameList")
@@ -57,4 +64,7 @@ def updateRec(rowID , updatedInfo):
 def closeDB():
     cursor.close()
     conn.close()
-    
+def findRec(searchTerm,catagory):
+    catagory = catagory.upper()
+    cursor.execute(f"SELECT * FROM gamelist WHERE {catagory} like '%{searchTerm}%'")
+    return cursor.fetchall()

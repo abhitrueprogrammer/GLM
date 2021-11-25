@@ -4,7 +4,6 @@ from sqlite3.dbapi2 import SQLITE_SELECT
 from sys import platform
 from types import resolve_bases
 import GenreLib
-import findRec
 
 import SQLib
 SQLib.createTable()
@@ -82,11 +81,17 @@ def search():
         catagory = CatagoryDict[Selection]
         #searching
         searchTerm = input("Enter the search term:")
-        Results = findRec.findRec(searchTerm,catagory)
+        Results = SQLib.findRec(searchTerm,catagory)
         print("The matching results are:")
         for i in range(len(Results)):
             print(i+1,".", Results[i])
 print("Library Management system created by Abhinav Pant, under GNU General Public License.")
+
+# Asking the user to add a game entry if not already added 
+if SQLib.tableEmpty() == True:
+    print("You have not added any entries in the database! Add at least one entry:")
+    addEntry()
+
 def showMenuGetInput():
     print("-"*50)
     fuctionDict = {'v':"View the library", 'a': "Add  a new entry", 'd':"Delete a entry", 's': "Search for something", 'u': "Update a existing entry", 'q': "quit"} #dictonary to store the menu entries

@@ -1,5 +1,5 @@
 def genreChooser():
-    print("Choose the genere of the game (if you want multiple, seperate each by comma):")
+    print("Choose the genre of the game (if you want multiple, seperate each by comma):")
     genreDict = {1: "Action", 2: "Action Adventure", 3: "Adventure", 4: "Role Playing", 5: "Simulation", 6: "Statergy", 7: "Sports", 8: "MMO", 9: "First Person Shooter", 10: "Sandbox"}
     for i in genreDict:
         print(f"{i}. {genreDict[i]}") #printing The genres and its indecies on the screen
