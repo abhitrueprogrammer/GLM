@@ -21,6 +21,7 @@ Method 2(Get the latest Version):
 * On windows: 
 
   * Clone the repository(download ZIP).
+  * Unzip to a suitable location. 
   * Double click main.py.
 
 * On Linux:
