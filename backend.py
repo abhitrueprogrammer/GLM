@@ -2,13 +2,13 @@ import GenreLib
 import SQLib
 
 
-def GetIntFromUser():
+def GetIntFromUser(message=""):
     '''Gets a integer from user and checks for its validity
     Returns: int; Number input by the user '''
     num = ""
     while type(num) is not int:
         try:
-            num = int(input())
+            num = int(input(message))
         except ValueError:
             print("Input numerical value only!")
     return num
@@ -70,7 +70,8 @@ def DelRec():
     print("Enter the row ID of the game you want to delete: ", end="")
     rowIDToBeDeleted = GetIntFromUser()
     while not(SQLib.check_if_rowID_exists(rowIDToBeDeleted)):
-        print("Given row ID does not exists, please check your input and try again: ", end="")
+        print(
+            "Given row ID does not exists, please check your input and try again: ", end="")
         rowIDToBeDeleted = GetIntFromUser()
     answer = ""
     print(
@@ -92,15 +93,13 @@ def DelRec():
 
 def search():
     '''Searchs for a entry by column'''
-    print("Select the catagory you want to search by:")
     # printing menu
     CatagoryDict = {1: "Name", 2: "Platform", 3: "GENRE",
-                    4: "DEV", 5: "USERSCORE"}  # make this global beech
+                    4: "DEV", 5: "USERSCORE"}  # make this global
     for i in CatagoryDict:
         print(f"{i}. {CatagoryDict[i]}")
-
     # taking input
-    Selection = GetIntFromUser()
+    Selection = GetIntFromUser("Select the catagory you want to search by: ")
     # getting output
     catagory = CatagoryDict[Selection]
     # searching

@@ -1,4 +1,3 @@
-from email import header
 import sqlite3
 
 conn = sqlite3.connect('gameList.db')
@@ -34,7 +33,7 @@ def tableEmpty():
 def show_all():
     cursor.execute("SELECT rowid, * FROM gameList")
     data = cursor.fetchall()
-    max_spaces = {0:5, 1:4, 2:8, 3:5, 4:4, 5:9}
+    max_spaces = {0: 5, 1: 4, 2: 8, 3: 5, 4: 4, 5: 9}
     for item in data:
         for i in range(len(item)):
             if len(str(item[i])) > max_spaces[i]:
@@ -42,12 +41,12 @@ def show_all():
     Header = ["RowID", "NAME", "PLATFORM", "GENRE", "DEV", "USERSCORE"]
     for i in range(len(Header)):
         spaces = (max_spaces[i]+1) - len(str(Header[i]))
-        print(str(Header[i]) + spaces* " "+" ", end="")
+        print(str(Header[i]) + spaces * " "+" ", end="")
     print()
     for item in data:
         for i in range(len(item)):
             spaces = (max_spaces[i]+1) - len(str(item[i]))
-            print(str(item[i]) + spaces* " "+" ", end="")
+            print(str(item[i]) + spaces * " "+" ", end="")
         print()
 
 
