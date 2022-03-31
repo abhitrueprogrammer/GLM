@@ -57,8 +57,7 @@ def addEntry():
 def UpdateRec():
     '''Updates a entry in Database, asking user for rowID and details of new entry'''
     SQLib.show_all()
-    print("Input the RowID of the thing you want to update")
-    rowIDToBeUpdated = GetIntFromUser()
+    rowIDToBeUpdated = GetIntFromUser("Input the RowID of the thing you want to update: ")
     updatedInfo = getInputForGameEntry()
     SQLib.updateRec(rowIDToBeUpdated, updatedInfo)
     print("Record Successfully updated!")
@@ -67,12 +66,9 @@ def UpdateRec():
 def DelRec():
     '''Deletes a record using rowID input by the user'''
     SQLib.show_all()
-    print("Enter the row ID of the game you want to delete: ", end="")
-    rowIDToBeDeleted = GetIntFromUser()
+    rowIDToBeDeleted = GetIntFromUser("Enter the row ID of the game you want to delete: ")
     while not(SQLib.check_if_rowID_exists(rowIDToBeDeleted)):
-        print(
-            "Given row ID does not exists, please check your input and try again: ", end="")
-        rowIDToBeDeleted = GetIntFromUser()
+        rowIDToBeDeleted = GetIntFromUser("Given row ID does not exists, please check your input and try again: ")
     answer = ""
     print(
         f"Are you sure, you want to delete entry number {rowIDToBeDeleted} (y/n):", end="\n")
