@@ -1,3 +1,4 @@
+from email import header
 import sqlite3
 
 conn = sqlite3.connect('gameList.db')
@@ -33,23 +34,20 @@ def tableEmpty():
 def show_all():
     cursor.execute("SELECT rowid, * FROM gameList")
     data = cursor.fetchall()
-    print("RowID", "NAME" + " "*28, "PLATFORM" + " " * 13, "GENRE" + " " *
-          45 + "DEV" + " " * 19, "USERSCORE", end="\n" + "-" * 140 + "\n")
+    max_spaces = {0:5, 1:4, 2:8, 3:5, 4:4, 5:9}
     for item in data:
-        for i in range(6):  # look out a way to calculate max spaces by columms
-            noOfSpaces = 0
-            if i == 0:
-                noOfSpaces = 4
-            if i == 1:
-                noOfSpaces = 32 - len(item[i])
-            if i == 2:
-                noOfSpaces = 20 - len(item[i])
-            if i == 3:
-                noOfSpaces = 50 - len(item[i])
-            if i == 4:
-                noOfSpaces = 22 - len(item[i])
-            print(item[i], noOfSpaces * " ", end="")
-
+        for i in range(len(item)):
+            if len(str(item[i])) > max_spaces[i]:
+                max_spaces[i] = len(str(item[i]))
+    Header = ["RowID", "NAME", "PLATFORM", "GENRE", "DEV", "USERSCORE"]
+    for i in range(len(Header)):
+        spaces = (max_spaces[i]+1) - len(str(Header[i]))
+        print(str(Header[i]) + spaces* " "+" ", end="")
+    print()
+    for item in data:
+        for i in range(len(item)):
+            spaces = (max_spaces[i]+1) - len(str(item[i]))
+            print(str(item[i]) + spaces* " "+" ", end="")
         print()
 
 
