@@ -81,7 +81,7 @@ def findRec(searchTerm, catagory):
 
 
 def check_if_rowID_exists(rowID):
-    cursor.execute("""SELECT rowid from gameList""")
+    cursor.execute(f"""SELECT rowid from gameList WHERE rowid = {rowID}""")
     data = cursor.fetchall()
     for tuple_of_row_ids in data:
         if rowID in tuple_of_row_ids:
